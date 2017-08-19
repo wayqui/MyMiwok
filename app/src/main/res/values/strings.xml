@@ -93,4 +93,7 @@
     <string name="str_phr9_miwok">yoowutis</string>
     <string name="str_phr10_miwok">әnni\'nem</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

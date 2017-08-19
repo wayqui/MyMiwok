@@ -1,22 +1,29 @@
-package com.example.android.mymiwok;
+package com.example.android.mymiwok.fragments;
+
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.android.mymiwok.R;
 import com.example.android.mymiwok.adapters.WordAdapter;
 import com.example.android.mymiwok.dataobject.Word;
 
 import java.util.ArrayList;
 
-public class PhrasesActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PhrasesFragment extends Fragment {
 
     private static final String TAG = "PhrasesActivity";
 
@@ -47,10 +54,16 @@ public class PhrasesActivity extends AppCompatActivity {
         }
     };
 
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View phrasesView = inflater.inflate(R.layout.word_list, container, false);
 
         final ArrayList<Word> words = new ArrayList<Word>();
         words.add(new Word(getString(R.string.str_phr1), getString(R.string.str_phr1_miwok), -1, R.raw.phrase_where_are_you_going));
@@ -64,10 +77,10 @@ public class PhrasesActivity extends AppCompatActivity {
         words.add(new Word(getString(R.string.str_phr9), getString(R.string.str_phr9_miwok), -1, R.raw.phrase_lets_go));
         words.add(new Word(getString(R.string.str_phr10), getString(R.string.str_phr10_miwok), -1, R.raw.phrase_come_here));
 
-        audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_phrases);
-        ListView lista = (ListView) findViewById(R.id.list);
+        WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_phrases);
+        ListView lista = (ListView) phrasesView.findViewById(R.id.list);
         lista.setAdapter(adapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,13 +91,15 @@ public class PhrasesActivity extends AppCompatActivity {
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     limpiarRecursosAudio();
-                    mReproductor = MediaPlayer.create(PhrasesActivity.this, words.get(position).getRelatedAudioId());
+                    mReproductor = MediaPlayer.create(getActivity(), words.get(position).getRelatedAudioId());
                     mReproductor.start();
                     mReproductor.setOnCompletionListener(mListenerReproduccion);
                 }
 
             }
         });
+
+        return phrasesView;
     }
 
     private void limpiarRecursosAudio() {
@@ -96,9 +111,10 @@ public class PhrasesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         Log.v(TAG, "calling onStop() method");
         super.onStop();
         limpiarRecursosAudio();
     }
+
 }

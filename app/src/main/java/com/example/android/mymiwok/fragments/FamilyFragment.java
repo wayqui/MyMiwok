@@ -1,24 +1,31 @@
-package com.example.android.mymiwok;
+package com.example.android.mymiwok.fragments;
+
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.android.mymiwok.R;
 import com.example.android.mymiwok.adapters.WordAdapter;
 import com.example.android.mymiwok.dataobject.Word;
 
 import java.util.ArrayList;
 
-public class FamilyActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FamilyFragment extends Fragment {
 
-    private static final String TAG = "FamilyActivity";
+    private static final String TAG = "FamilyFragment";
 
     private MediaPlayer mReproductor;
 
@@ -46,11 +53,17 @@ public class FamilyActivity extends AppCompatActivity {
             limpiarRecursosAudio();
         }
     };
+    public FamilyFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View familyView = inflater.inflate(R.layout.word_list, container, false);
+
 
         final ArrayList<Word> words = new ArrayList<Word>();
         words.add(new Word(getString(R.string.str_father), getString(R.string.str_father_miwok), R.drawable.family_father, R.raw.family_father));
@@ -64,19 +77,21 @@ public class FamilyActivity extends AppCompatActivity {
         words.add(new Word(getString(R.string.str_grandmother), getString(R.string.str_grandmother_miwok), R.drawable.family_grandmother, R.raw.family_grandmother));
         words.add(new Word(getString(R.string.str_grandfather), getString(R.string.str_grandfather_miwok), R.drawable.family_grandfather, R.raw.family_grandfather));
 
-        audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
-        final WordAdapter wordAdapter = new WordAdapter(this, words, R.color.category_family);
-        ListView lista = (ListView)findViewById(R.id.list);
+        final WordAdapter wordAdapter = new WordAdapter(getActivity(), words, R.color.category_family);
+        ListView lista = (ListView)familyView.findViewById(R.id.list);
         lista.setAdapter(wordAdapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mReproductor = MediaPlayer.create(FamilyActivity.this, words.get(position).getRelatedAudioId());
+                mReproductor = MediaPlayer.create(getActivity(), words.get(position).getRelatedAudioId());
                 mReproductor.start();
                 mReproductor.setOnCompletionListener(mListenerReproduccion);
             }
         });
+
+        return familyView;
     }
 
     private void limpiarRecursosAudio() {
@@ -87,9 +102,10 @@ public class FamilyActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         Log.v(TAG, "calling onStop() method");
         super.onStop();
         limpiarRecursosAudio();
     }
+
 }

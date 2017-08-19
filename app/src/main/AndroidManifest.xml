@@ -15,13 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhrasesActivity" android:label="@string/str_phrases"
+        <activity android:name=".activities.PhrasesActivity" android:label="@string/str_phrases"
             android:parentActivityName="com.example.android.mymiwok.MainActivity"/>
-        <activity android:name=".NumbersActivity" android:label="@string/str_numbers"
+        <activity android:name=".activities.NumbersActivity" android:label="@string/str_numbers"
             android:parentActivityName="com.example.android.mymiwok.MainActivity"/>
-        <activity android:name=".FamilyActivity" android:label="@string/str_family"
+        <activity android:name=".activities.FamilyActivity" android:label="@string/str_family"
             android:parentActivityName="com.example.android.mymiwok.MainActivity"/>
-        <activity android:name=".ColorsActivity" android:label="@string/str_colors"
+        <activity android:name=".activities.ColorsActivity" android:label="@string/str_colors"
             android:parentActivityName="com.example.android.mymiwok.MainActivity"/>
     </application>
 

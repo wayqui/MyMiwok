@@ -1,21 +1,29 @@
-package com.example.android.mymiwok;
+package com.example.android.mymiwok.fragments;
+
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.android.mymiwok.R;
 import com.example.android.mymiwok.adapters.WordAdapter;
 import com.example.android.mymiwok.dataobject.Word;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ColorsFragment extends Fragment {
 
     private static final String TAG = "ColorsActivity";
 
@@ -46,10 +54,18 @@ public class ColorsActivity extends AppCompatActivity {
         }
     };
 
+    public ColorsFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View colorsView = inflater.inflate(R.layout.word_list, container, false);
+
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> words = new ArrayList<Word>();
         words.add(new Word(getString(R.string.str_red), getString(R.string.str_red_miwok), R.drawable.color_red, R.raw.color_red));
@@ -61,19 +77,24 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new Word(getString(R.string.str_dusty_yellow), getString(R.string.str_dusty_yellow_miwok), R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
         words.add(new Word(getString(R.string.str_mustard_yellow), getString(R.string.str_mustard_yellow_miwok), R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
 
-        audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        //getActivity().setContentView(R.layout.word_list);
 
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_colors);
-        ListView lista = (ListView)findViewById(R.id.list);
+        WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_colors);
+
+        ListView lista = (ListView) colorsView.findViewById(R.id.list);
+
         lista.setAdapter(adapter);
+
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mReproductor = MediaPlayer.create(ColorsActivity.this, words.get(position).getRelatedAudioId());
+                mReproductor = MediaPlayer.create(getActivity(), words.get(position).getRelatedAudioId());
                 mReproductor.start();
                 mReproductor.setOnCompletionListener(mListenerReproduccion);
             }
         });
+
+        return colorsView;
     }
 
     private void limpiarRecursosAudio() {
@@ -84,9 +105,10 @@ public class ColorsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         Log.v(TAG, "calling onStop() method");
         super.onStop();
         limpiarRecursosAudio();
     }
+
 }
