@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        style="@style/itemImage"
+        android:id="@+id/imagen"
+        app:srcCompat="@drawable/family_daughter"
+        />
+
+
+    <LinearLayout
+        style="@style/itemStyleLayout"
+        android:id="@+id/text_container"
+        android:background="@color/category_family"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/itemStyleLayout"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/itemStyleMiwok"
+                android:id="@+id/text_mikow"
+                tools:text="Prueba" />
+
+            <TextView
+                style="@style/itemStyleEnglish"
+                android:id="@+id/text_english"
+                tools:text="Prueba2" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/itemPlayIcon"
+            android:id="@+id/imagen2"
+            app:srcCompat="@drawable/ic_play_arrow" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

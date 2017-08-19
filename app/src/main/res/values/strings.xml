@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">My Miwok</string>
+    <string name="str_numbers">Numbers</string>
+    <string name="str_family">Family</string>
+    <string name="str_phrases">Phrases</string>
+    <string name="str_colors">Colors</string>
+
+    <!-- NUMEROS -->
+    <string name="str_one">One</string>
+    <string name="str_two">Two</string>
+    <string name="str_three">Three</string>
+    <string name="str_four">Four</string>
+    <string name="str_five">Five</string>
+    <string name="str_six">Six</string>
+    <string name="str_seven">Seven</string>
+    <string name="str_eight">Eight</string>
+    <string name="str_nine">Nine</string>
+    <string name="str_ten">Ten</string>
+
+    <string name="str_one_miwok">Lutti</string>
+    <string name="str_two_miwok">Oṭiiko</string>
+    <string name="str_three_miwok">Tolookosu</string>
+    <string name="str_four_miwok">Oyyiisa</string>
+    <string name="str_five_miwok">Massokka</string>
+    <string name="str_six_miwok">Temmokka</string>
+    <string name="str_seven_miwok">Kenekaku</string>
+    <string name="str_eight_miwok">Kawinṭa</string>
+    <string name="str_nine_miwok">Wo\'e</string>
+    <string name="str_ten_miwok">Na\'aacha</string>
+
+    <!-- FAMILIA -->
+    <string name="str_father">Father</string>
+    <string name="str_mother">Mother</string>
+    <string name="str_son">Son</string>
+    <string name="str_daughter">Daughter</string>
+    <string name="str_oldbro">Older brother</string>
+    <string name="str_younbro">Younger brother</string>
+    <string name="str_oldsis">Older sister</string>
+    <string name="str_younsis">Younger sister</string>
+    <string name="str_grandmother">Grandmother</string>
+    <string name="str_grandfather">Grandfather</string>
+
+    <string name="str_father_miwok">әpә</string>
+    <string name="str_mother_miwok">әṭa</string>
+    <string name="str_son_miwok">angsi</string>
+    <string name="str_daughter_miwok">tune</string>
+    <string name="str_oldbro_miwok">taachi</string>
+    <string name="str_younbro_miwok">chalitti</string>
+    <string name="str_oldsis_miwok">teṭe</string>
+    <string name="str_younsis_miwok">kolliti</string>
+    <string name="str_grandmother_miwok">ama</string>
+    <string name="str_grandfather_miwok">paapa</string>
+
+    <!-- COLORES -->
+    <string name="str_red">Red</string>
+    <string name="str_green">Green</string>
+    <string name="str_brown">Brown</string>
+    <string name="str_gray">Gray</string>
+    <string name="str_black">Black</string>
+    <string name="str_white">White</string>
+    <string name="str_dusty_yellow">Dusty yellow</string>
+    <string name="str_mustard_yellow">Mustard yellow</string>
+
+    <string name="str_red_miwok">weṭeṭṭi</string>
+    <string name="str_green_miwok">chokokki</string>
+    <string name="str_brown_miwok">ṭakaakki</string>
+    <string name="str_gray_miwok">ṭopoppi</string>
+    <string name="str_black_miwok">kululli</string>
+    <string name="str_white_miwok">kelelli</string>
+    <string name="str_dusty_yellow_miwok">ṭopiisә</string>
+    <string name="str_mustard_yellow_miwok">chiwiiṭә</string>
+
+    <!-- FRASES -->
+    <string name="str_phr1">Where are you going?</string>
+    <string name="str_phr2">What is your name?</string>
+    <string name="str_phr3">My name is...</string>
+    <string name="str_phr4">How are you feeling?</string>
+    <string name="str_phr5">I’m feeling good.</string>
+    <string name="str_phr6">Are you coming?</string>
+    <string name="str_phr7">Yes, I’m coming.</string>
+    <string name="str_phr8">I’m coming.</string>
+    <string name="str_phr9">Let’s go.</string>
+    <string name="str_phr10">Come here.</string>
+
+    <string name="str_phr1_miwok">minto wuksus</string>
+    <string name="str_phr2_miwok">tinnә oyaase\'nә</string>
+    <string name="str_phr3_miwok">oyaaset...</string>
+    <string name="str_phr4_miwok">michәksәs?</string>
+    <string name="str_phr5_miwok">kuchi achit</string>
+    <string name="str_phr6_miwok">әәnәs\'aa?</string>
+    <string name="str_phr7_miwok">hәә\’ әәnәm</string>
+    <string name="str_phr8_miwok">әәnәm</string>
+    <string name="str_phr9_miwok">yoowutis</string>
+    <string name="str_phr10_miwok">әnni\'nem</string>
+
+</resources>
